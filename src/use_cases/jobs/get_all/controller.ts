@@ -55,6 +55,8 @@ export class GetAllJobsController {
         result: result.paginatedResults,
         metadata: {
           totalCount: result.totalCount?.[0]?.count || 0,
+          closedJobs: result?.closedJobs?.count || 0,
+          openJobs: result?.openJobs?.count || 0,
         },
       };
       res.status(200).json(formattedResponse);

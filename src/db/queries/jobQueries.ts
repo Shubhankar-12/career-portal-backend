@@ -214,6 +214,14 @@ export class JobQueries {
     return await this.jobModel.aggregate(aggregateQuery);
   };
 
+  jobCountByStatus = async (company_id: any): Promise<any> => {
+    return await this.jobModel.aggregate([
+      { $match: { company_id: new ObjectId(company_id) } },
+      { $group: { _id: "$status", count: { $sum: 1 } } },
+      { $project: { _id: 0, status: "$_id", count: 1 } },
+    ]);
+  };
+
   deleteJob = async (job_id: any): Promise<any> => {
     return await this.jobModel.deleteOne({ _id: new ObjectId(job_id) });
   };
