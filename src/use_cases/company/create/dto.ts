@@ -1,6 +1,7 @@
 import { CreateCompanyRequest } from "./request";
 export interface CreateCompanyDto {
   name: string;
+  website: string;
   description?: string;
   logo_url?: {
     url: string;
@@ -43,6 +44,7 @@ export class CreateCompanyDtoConverter {
   constructor(data: CreateCompanyRequest) {
     this.output_object = {
       name: data.name,
+      website: data.website,
       description: data.description,
       logo_url: data.logo_url,
       banner_url: data.banner_url,

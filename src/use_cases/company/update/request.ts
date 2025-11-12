@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface UpdateCompanyRequest {
   company_id: string;
+  website?: string;
   name?: string;
   description?: string;
   logo_url?: string;

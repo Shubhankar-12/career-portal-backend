@@ -4,6 +4,7 @@ export interface ICompany {
   name: string;
   slug: string;
   user_id: string;
+  website: string;
   description?: string;
   logo_url?: string;
   banner_url?: string;

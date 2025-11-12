@@ -10,14 +10,6 @@ type UseCaseRequest = {
 };
 export class GetAllJobsUseCase {
   async execute({ request, auth }: UseCaseRequest): Promise<any> {
-    if (!auth.token) {
-      return [];
-    }
-
-    if (!auth.decodedToken.user_id) {
-      return [];
-    }
-
     const jobs = await jobQueries.getAllJobs(request);
 
     if (jobs[0].paginatedResults.length == 0) {

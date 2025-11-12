@@ -2,6 +2,7 @@
 export interface CreateCompanyRequest {
   name: string;
   description?: string;
+  website: string;
   logo_url?: {
     url: string;
     name: string;

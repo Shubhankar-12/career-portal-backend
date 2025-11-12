@@ -26,7 +26,59 @@ export class CompanyQueries {
   };
 
   getCompanyById = async (id: string): Promise<any> => {
-    return await this.companyModel.findOne({ _id: new ObjectId(id) });
+    let aggregateQuery: any[] = [];
+
+    aggregateQuery.push({
+      $match: {
+        _id: new ObjectId(id),
+      },
+    });
+
+    aggregateQuery.push({
+      $lookup: {
+        from: "users",
+        localField: "user_id",
+        foreignField: "_id",
+        as: "user",
+      },
+    });
+
+    aggregateQuery.push({
+      $unwind: {
+        path: "$user",
+        preserveNullAndEmptyArrays: true,
+      },
+    });
+
+    aggregateQuery.push({
+      $project: {
+        _id: 0,
+        company_id: "$_id",
+        user_id: 1,
+        name: 1,
+        slug: 1,
+        description: 1,
+        logo_url: 1,
+        banner_url: 1,
+        culture_video_url: 1,
+        theme: 1,
+        website: 1,
+        sections: 1,
+        published: 1,
+        user: {
+          user_id: "$user._id",
+          name: "$user.name",
+          email: "$user.email",
+        },
+        created_at: 1,
+        updated_at: 1,
+      },
+    });
+
+    const company = await this.companyModel.aggregate(aggregateQuery);
+    if (company.length === 0) return null;
+
+    return company[0];
   };
 
   getCompanyBySlug = async (slug: string): Promise<any> => {
@@ -66,6 +118,7 @@ export class CompanyQueries {
         banner_url: 1,
         culture_video_url: 1,
         theme: 1,
+        website: 1,
         sections: 1,
         published: 1,
         user: {

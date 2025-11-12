@@ -1,6 +1,7 @@
 import { UpdateCompanyRequest } from "./request";
 export interface UpdateCompanyDto {
   company_id: string;
+  website?: string;
   name?: string;
   description?: string;
   logo_url?: string;
@@ -29,6 +30,7 @@ export class UpdateCompanyDtoConverter {
   constructor(data: UpdateCompanyRequest) {
     this.output_object = {
       company_id: data.company_id,
+      website: data.website,
       name: data.name,
       description: data.description,
       logo_url: data.logo_url,

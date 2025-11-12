@@ -10,6 +10,6 @@ export const jobRouter = express.Router();
 
 jobRouter.post("/create", authenticate, createJobController.execute());
 jobRouter.patch("/update", authenticate, updateJobController.execute());
-jobRouter.get("/list", authenticate, getAllJobsController.execute());
+jobRouter.get("/list", getAllJobsController.execute());
 jobRouter.delete("/delete", authenticate, deleteJobController.execute());
 jobRouter.get("/", authenticate, getJobByIdController.execute());

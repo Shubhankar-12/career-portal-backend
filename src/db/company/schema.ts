@@ -11,7 +11,7 @@ export const CompanySchema = new Schema(
     name: { type: String, required: true },
     slug: { type: String, unique: true, required: true },
     user_id: { type: Types.ObjectId, required: true },
-
+    website: { type: String, required: true },
     description: { type: String },
     logo_url: { type: Media },
     banner_url: { type: Media },
