@@ -19,7 +19,6 @@ export class CreateFileController {
         ...req.body,
         ...req.file,
       };
-      console.log("requestData", req.body);
 
       // Validate Request
       const validator = new CreateFileValidator(requestData);

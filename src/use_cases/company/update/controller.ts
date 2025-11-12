@@ -19,7 +19,6 @@ export class UpdateCompanyController {
         ...req.body,
         ...req.file,
       };
-      console.log("requestData", req.body.tags);
 
       // Validate Request
       const validator = new UpdateCompanyValidator(requestData);
