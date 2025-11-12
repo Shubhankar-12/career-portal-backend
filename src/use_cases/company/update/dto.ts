@@ -20,7 +20,7 @@ export interface UpdateCompanyDto {
     image_url?: string;
     order?: number;
   }>;
-  published: string;
+  published?: string;
 }
 
 export class UpdateCompanyDtoConverter {
@@ -36,9 +36,7 @@ export class UpdateCompanyDtoConverter {
       culture_video_url: data.culture_video_url,
       theme: data.theme,
       sections: data.sections,
-      published: data.published
-        ? new Date(data.published).toISOString()
-        : new Date().toISOString(),
+      published: data.published,
     };
   }
 

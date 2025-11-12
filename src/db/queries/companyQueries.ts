@@ -25,6 +25,10 @@ export class CompanyQueries {
     return await this.companyModel.findOne({ user_id: new ObjectId(id) });
   };
 
+  getCompanyById = async (id: string): Promise<any> => {
+    return await this.companyModel.findOne({ _id: new ObjectId(id) });
+  };
+
   getCompanyBySlug = async (slug: string): Promise<any> => {
     let aggregateQuery: any[] = [];
 
@@ -63,11 +67,14 @@ export class CompanyQueries {
         culture_video_url: 1,
         theme: 1,
         sections: 1,
+        published: 1,
         user: {
           user_id: "$user._id",
           name: "$user.name",
           email: "$user.email",
         },
+        created_at: 1,
+        updated_at: 1,
       },
     });
 

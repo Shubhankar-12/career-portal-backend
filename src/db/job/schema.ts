@@ -4,6 +4,7 @@ export const JobSchema = new Schema(
   {
     company_id: { type: Types.ObjectId, required: true },
     title: { type: String, required: true },
+    description: { type: String },
     location: {
       type: String,
     },
@@ -25,9 +26,11 @@ export const JobSchema = new Schema(
       enum: ["CONFIDENTIAL", "RANGE", "FIXED"],
       default: "CONFIDENTIAL",
     },
-    salary_range: {
-      min: Number,
-      max: Number,
+    min_salary: {
+      type: Number,
+    },
+    max_salary: {
+      type: Number,
     },
     salary_fixed: {
       type: Number,
@@ -37,9 +40,7 @@ export const JobSchema = new Schema(
       default: "INR",
     },
     job_slug: { type: String, unique: true },
-    description: {
-      type: String,
-    },
+
     posted_at: { type: Date, default: Date.now },
     status: { type: String, enum: ["OPEN", "CLOSED"], default: "OPEN" },
   },
