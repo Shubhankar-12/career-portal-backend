@@ -14,7 +14,7 @@ export class GetAllJobsUseCase {
 
     const jobCounts: { count: number; status: "OPEN" | "CLOSED" }[] =
       await jobQueries.jobCountByStatus(request.company_id);
-    console.log("jobCounts", jobCounts); // [ { count: 1, status: 'CLOSED' }, { count: 16, status: 'OPEN' } ]
+    // console.log("jobCounts", jobCounts); // [ { count: 1, status: 'CLOSED' }, { count: 16, status: 'OPEN' } ]
     const closedJobs = jobCounts.filter(
       (job) => job.status === "CLOSED"
     )[0] || { count: 0, status: "CLOSED" };
