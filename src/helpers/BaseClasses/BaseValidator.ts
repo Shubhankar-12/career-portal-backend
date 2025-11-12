@@ -14,6 +14,18 @@ export class BaseValidator {
     }
   }
 
+  validateString(value: string): Boolean {
+    if (value == undefined) {
+      return false;
+    } else if (typeof value !== "string") {
+      return false;
+    } else if (value.trim().length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   validateStatus(value: string): Boolean {
     if (value == undefined) {
       return false;

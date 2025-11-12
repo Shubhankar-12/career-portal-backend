@@ -2,7 +2,6 @@ import { Readable } from "stream";
 import { IFile } from "../../../db/files";
 import { jobQueries } from "../../../db/queries";
 import { ErrorResponse, ResponseLocalAuth } from "../../../types/all_types";
-import cloudinary from "../../../utils/cloudinary";
 import { DeleteJobDto } from "./dto";
 
 type UseCaseRequest = {

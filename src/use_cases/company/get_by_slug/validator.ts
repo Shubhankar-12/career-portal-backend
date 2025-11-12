@@ -11,9 +11,7 @@ export class GetCompanySlugValidator extends BaseValidator {
   parseRequest(): String[] {
     const errors: string[] = [];
 
-    // this.request.user_id &&
-    //   !this.validateId(this.request.user_id) &&
-    //   errors.push("Invalid user id");
+    !this.validateString(this.request.slug) && errors.push("Invalid user id");
 
     return errors;
   }
