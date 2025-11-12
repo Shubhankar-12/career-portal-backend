@@ -136,4 +136,47 @@ export class CompanyQueries {
 
     return company[0];
   };
+
+  getAllCompany = async (data: any): Promise<any> => {
+    let aggregateQuery: any[] = [];
+
+    if (data.published) {
+      aggregateQuery.push({
+        $match: {
+          published: "PUBLISHED",
+        },
+      });
+    }
+
+    aggregateQuery.push({
+      $project: {
+        _id: 0,
+        company_id: "$_id",
+        // user_id: 1,
+        name: 1,
+        slug: 1,
+        description: 1,
+        logo_url: 1,
+        banner_url: 1,
+        culture_video_url: 1,
+
+        published: 1,
+        created_at: 1,
+        updated_at: 1,
+      },
+    });
+    const $facet: any = {
+      paginatedResults: [],
+      totalCount: [{ $count: "count" }],
+    };
+    if (data.skip != undefined) {
+      $facet.paginatedResults.push({ $skip: data.skip });
+    }
+    if (data.limit != undefined) {
+      $facet.paginatedResults.push({ $limit: data.limit });
+    }
+    aggregateQuery.push({ $facet });
+
+    return await this.companyModel.aggregate(aggregateQuery);
+  };
 }

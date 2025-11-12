@@ -12,7 +12,7 @@ export class UpdateCompanyValidator extends BaseValidator {
   parseRequest(): String[] {
     const errors: string[] = [];
 
-    this.validateId(this.request.company_id) &&
+    !this.validateId(this.request.company_id) &&
       errors.push("Invalid company id");
 
     this.request.published &&

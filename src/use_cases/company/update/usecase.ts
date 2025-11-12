@@ -23,7 +23,7 @@ export class UpdateCompanyUseCase {
       user_id: userId,
     });
 
-    const resp = await companyQueries.getCompanyByUserId(userId);
+    const resp = await companyQueries.getCompanyById(request.company_id);
 
     if (!resp) return { error: "Error updating company" };
 
