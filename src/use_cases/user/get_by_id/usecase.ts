@@ -1,4 +1,3 @@
-import { IFile } from "../../../db/files";
 import { userQueries } from "../../../db/queries";
 import { ErrorResponse, ResponseLocalAuth } from "../../../types/all_types";
 import { GetByIdUserDto } from "./dto";

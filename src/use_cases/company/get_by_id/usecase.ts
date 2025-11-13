@@ -1,4 +1,3 @@
-import { IFile } from "../../../db/files";
 import { companyQueries } from "../../../db/queries";
 import { ResponseLocalAuth } from "../../../types/all_types";
 import { GetCompanyByIdDto } from "./dto";

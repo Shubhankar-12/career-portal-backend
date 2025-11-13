@@ -1,4 +1,3 @@
-import { IFile } from "../../../db/files";
 import { jobQueries } from "../../../db/queries";
 import { ErrorResponse, ResponseLocalAuth } from "../../../types/all_types";
 import { GetAllJobsDto } from "./dto";

@@ -1,7 +1,7 @@
 import AWS, { S3 } from "aws-sdk";
 import { v4 as uuid } from "uuid";
 import { ManagedUpload } from "aws-sdk/clients/s3";
-import { IFile } from "../../../db/files";
+
 import { CreateFileDto } from "./dto";
 import { ResponseLocalAuth, ErrorResponse } from "../../../types/all_types";
 
