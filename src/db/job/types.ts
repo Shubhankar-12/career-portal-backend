@@ -16,6 +16,7 @@ export interface IJob {
   work_policy?: "Remote" | "Hybrid" | "Onsite";
   salary_type: "CONFIDENTIAL" | "RANGE" | "FIXED";
   salary_fixed?: number;
+  salary_frequency?: "MONTHLY" | "YEARLY";
   currency: string;
   job_slug: string;
   posted_at: Date;

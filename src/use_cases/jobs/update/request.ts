@@ -11,6 +11,8 @@ export interface UpdateJobRequest {
   experience_level?: string;
   job_type?: string;
   salary_type?: string;
+  salary_frequency?: string;
+
   min_salary?: number;
   max_salary?: number;
   salary_fixed?: number;

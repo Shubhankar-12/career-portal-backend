@@ -9,6 +9,7 @@ export interface CreateJobDto {
   employment_type?: string;
   experience_level?: string;
   job_type?: string;
+  salary_frequency?: string;
   salary_type?: string;
   min_salary?: number;
   max_salary?: number;
@@ -34,6 +35,7 @@ export class CreateJobDtoConverter {
       job_type: data.job_type,
       salary_type: data.salary_type,
       min_salary: data.min_salary,
+      salary_frequency: data.salary_frequency,
       max_salary: data.max_salary,
       salary_fixed: data.salary_fixed,
       currency: data.currency,

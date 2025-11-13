@@ -14,6 +14,7 @@ export interface UpdateJobDto {
   min_salary?: number;
   max_salary?: number;
   salary_fixed?: number;
+  salary_frequency?: string;
   currency?: string;
   posted_at?: Date;
   status?: string;
@@ -38,6 +39,7 @@ export class UpdateJobDtoConverter {
       min_salary: data.min_salary,
       max_salary: data.max_salary,
       salary_fixed: data.salary_fixed,
+      salary_frequency: data.salary_frequency,
       currency: data.currency,
       posted_at: data.posted_at,
       status: data.status,

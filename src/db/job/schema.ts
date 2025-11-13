@@ -26,6 +26,13 @@ export const JobSchema = new Schema(
       enum: ["CONFIDENTIAL", "RANGE", "FIXED"],
       default: "CONFIDENTIAL",
     },
+    // per month/ year
+    salary_frequency: {
+      type: String,
+      enum: ["MONTHLY", "YEARLY"],
+      default: "MONTHLY",
+    },
+
     min_salary: {
       type: Number,
     },
