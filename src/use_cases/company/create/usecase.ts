@@ -19,7 +19,11 @@ export class CreateCompanyUseCase {
     const userId = auth.decodedToken.user_id;
 
     // use slugify
-    const slug = slugify(request.name, { lower: true, strict: true });
+    let slug = slugify(request.name, { lower: true, strict: true });
+
+    const existingCompany = await companyQueries.getCompanyBySlug(slug);
+
+    if (existingCompany) slug += `-${Date.now()}`;
 
     const companyResp = await companyQueries.createCompany({
       ...request,
