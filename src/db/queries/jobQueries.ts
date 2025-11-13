@@ -227,4 +227,26 @@ export class JobQueries {
   deleteJob = async (job_id: any): Promise<any> => {
     return await this.jobModel.deleteOne({ _id: new ObjectId(job_id) });
   };
+
+  getAllUniqueLocations = async (): Promise<any> => {
+    let aggregateQuery: any[] = [];
+
+    aggregateQuery.push({
+      $group: {
+        _id: "$location",
+      },
+    });
+
+    aggregateQuery.push({
+      $project: {
+        _id: 0,
+        location: "$_id",
+      },
+    });
+
+    const resp = await this.jobModel.aggregate(aggregateQuery);
+    if (!resp) return [];
+
+    return resp;
+  };
 }

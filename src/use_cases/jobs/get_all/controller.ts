@@ -57,6 +57,7 @@ export class GetAllJobsController {
           totalCount: result.totalCount?.[0]?.count || 0,
           closedJobs: result?.closedJobs?.count || 0,
           openJobs: result?.openJobs?.count || 0,
+          locationArray: result?.locationArray || [],
         },
       };
       res.status(200).json(formattedResponse);
